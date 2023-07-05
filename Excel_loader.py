@@ -1,5 +1,4 @@
 import openpyxl as xl
-import os
 from Column import *
 import pandas as pd
 import random
@@ -55,7 +54,7 @@ class Data_Generator:
             else:
                 self.df[col] = pd.Series(dtype='int')
         
-    def generate_data(self, num_rows,loader,entities) -> Entity:
+    def generate_data(self, num_rows,loader,entities):
         for i in range(num_rows):
             rand_col = random.choice(loader)
             idx = loader.index(rand_col)
@@ -68,4 +67,4 @@ class Data_Generator:
 loader = Excel_Loader()
 entities = loader.load('Price-Estimate-Engine/data/data-bassel.xlsx')
 all_dat = Data_Generator()
-all_dat.generate_data(10,loader.sheet_names,entities)
+all_dat.generate_data(1000,loader.sheet_names,entities)
